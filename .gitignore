@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+
+# VSCode settings (optional)
+.vscode/

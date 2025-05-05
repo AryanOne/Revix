@@ -1,0 +1,20 @@
+{
+  "name": "revix_git",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AryanOne/Revix#readme",
+  "bugs": {
+    "url": "https://github.com/AryanOne/Revix/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AryanOne/Revix.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
