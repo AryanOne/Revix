@@ -3,6 +3,7 @@ import { PrismaClient } from "../generated/prisma";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+
 const app = express();
 const prisma=new PrismaClient();
 
@@ -87,6 +88,10 @@ app.post("/login",async(req:Request,res:Response)=>{
 app.post('/logout',(req:Request,res:Response)=>{
     res.clearCookie("token");
     res.send("Logout Successfull")
+})
+
+app.get('/profile',(req:Request,res:Response)=>{
+
 })
 
 app.listen(7070, () => {
