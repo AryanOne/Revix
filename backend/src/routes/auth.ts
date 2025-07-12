@@ -3,14 +3,24 @@ import { PrismaClient } from "../../generated/prisma";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+import userInput from "../middlewares/userInputValidation";
+import userExist from "../middlewares/userExist";
+import userAuth from "../middlewares/userAuthenticated";
+
 const router=express.Router();
 const prisma=new PrismaClient();
 
-router.post("/signup",async (req: Request, res: Response) => {
+router.post("/signup",userInput,async (req: Request, res: Response) => {
     const { username, email, password } = req.body;
 
-    if (!username || !email || !password) {
-        res.status(400).send("Missing fields");
+    const user=await prisma.user.findUnique({
+        where:{
+            email
+        }
+    })
+
+    if(user){
+        res.send("User already exist");
         return;
     }
 
@@ -43,14 +53,9 @@ router.post("/signup",async (req: Request, res: Response) => {
     
 });
 
-router.post("/login",async(req:Request,res:Response)=>{
+router.post("/login",userInput,async(req:Request,res:Response)=>{
     
     const {email,password}=req.body;
-
-    if(!email || !password){
-        res.send("Missing Fields");
-        return;
-    }
     
     const user=await prisma.user.findUnique({
         where:{
@@ -82,29 +87,9 @@ router.post("/login",async(req:Request,res:Response)=>{
         res.send("Login successfull");
 })
 
-router.post('/logout',(req:Request,res:Response)=>{
+router.post('/logout',userAuth,(req:Request,res:Response)=>{
     res.clearCookie("token");
     res.send("Logout Successfull")
 })
-
-router.get('/profile', async (req: Request, res: Response) => {
-    const token = req.cookies.token;
-    if (!token) {
-        res.send("Not logged in");
-        return;
-    }    
-
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number };
-        const user = await prisma.user.findUnique({ where: { id: decoded.userId } });
-        if (!user){
-            res.send("User not found");
-            return;
-        }
-        res.send(`Welcome ${user.username}`);
-    } catch {
-        res.send("Invalid token");
-    }
-});
 
 export default router;
