@@ -14,4 +14,16 @@ model User {
   email      String   @unique
   password   String
   created_at DateTime @default(now())
+  repositories Repository[]
+}
+
+model Repository{
+  id          Int @id @default(autoincrement())
+  name        String 
+  description String?
+  isPrivate   Boolean @default(false)
+  ownerId     Int
+  owner       User @relation(fields: [ownerId],references: [id])
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
