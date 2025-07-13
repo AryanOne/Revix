@@ -13,7 +13,7 @@ const userExist=async(req:Request,res:Response,next:NextFunction)=>{
     })
 
     if(!user){
-        res.send("User doesnt exist");
+        res.status(404).send("User doesnt exist");
         return;
     }
 

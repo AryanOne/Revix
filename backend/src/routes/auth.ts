@@ -20,7 +20,7 @@ router.post("/signup",userInput,async (req: Request, res: Response) => {
     })
 
     if(user){
-        res.send("User already exist");
+        res.status(409).send("User already exist");
         return;
     }
 
@@ -44,11 +44,11 @@ router.post("/signup",userInput,async (req: Request, res: Response) => {
             maxAge: 1000 * 60 * 60 * 24 * 7           
         });
 
-        res.send("Signup successfull");
+        res.status(201).send("user successfully created");
 
     }catch(err){
         console.log(err);
-        res.send("Something went wrong..")
+        res.status(500).send("server problem")
     }
     
 });
@@ -64,14 +64,14 @@ router.post("/login",userInput,async(req:Request,res:Response)=>{
     })
 
     if(!user){
-        res.send("User doesnt exist");
+        res.status(404).send("User doesnt exist");
         return;
     }
 
     const validPassword= await bcrypt.compare(password,user.password);
 
     if(!validPassword){
-        res.send("Incorrect Password");
+        res.status(401).send("Incorrect Password");
         return;
     }
 
@@ -84,12 +84,12 @@ router.post("/login",userInput,async(req:Request,res:Response)=>{
             maxAge: 1000 * 60 * 60 * 24 * 7           
         });
 
-        res.send("Login successfull");
+        res.status(200).send("Login successfull");
 })
 
 router.post('/logout',userAuth,(req:Request,res:Response)=>{
     res.clearCookie("token");
-    res.send("Logout Successfull")
+    res.status(200).send("Logout Successfull")
 })
 
 export default router;
