@@ -1,20 +1,23 @@
 export default function Home() {
+
   return (
-    <div className="h-full w-[46.875rem]">
-      <h1>{course.courseTitle}</h1>
+    <div className="bg bg-blue-800 mt-16 h-full flex justify-center">
+      <div className="h-full w-187.5">
+        <h1>{course.courseTitle}</h1>
 
-      {course.modules.map((module, index) => (
-        <div key={index} id={`module-${index}`} className="moduleheading">
-          <h2>{module.mainTitle}</h2>
+        {course.modules.map((module, index) => (
+          <div key={index} id={`module-${index}`} className="moduleheading">
+            <h2>{module.mainTitle}</h2>
 
-          {module.topics.map((topic, i) => (
-            <div key={i}>
-              <h3>{topic.subtitle}</h3>
-              <p>{topic.text}</p>
-            </div>
-          ))}
-        </div>
-      ))}
+            {module.topics.map((topic, i) => (
+              <div key={i}>
+                <h3>{topic.subtitle}</h3>
+                <p>{topic.text}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
