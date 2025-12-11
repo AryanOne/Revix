@@ -1,7 +1,7 @@
 export default function Home() {
 
   return (
-    <div className="bg bg-blue-800 mt-16 h-full flex justify-center">
+    <div className="bg-blue-800 mt-16 h-full flex xl:justify-center">
       <div className="h-full w-187.5">
         <h1>{course.courseTitle}</h1>
 
