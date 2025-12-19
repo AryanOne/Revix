@@ -1,4 +1,4 @@
-export default function Home() {
+export default function CousePage() {
 
   return (
     <div className="bg-blue-800 mt-16 h-full flex xl:justify-center">
