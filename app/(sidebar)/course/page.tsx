@@ -1,24 +1,28 @@
-export default function CousePage() {
+import RightSideBar from "@/app/components/RightBar";
 
-  return (
-    <div className="bg-blue-800 mt-16 h-full flex xl:justify-center">
-      <div className="h-full w-187.5">
-        <h1>{course.courseTitle}</h1>
+export default function CourseDisplayPage(){
+    return(
+        <>
+            <div className="h-full xl:ml-17 min-[1150px]:mr-96  flex px-6 xl:px-10 pt-8">
+                <div className="h-full">
+                    <h1>{course.courseTitle}</h1>
+s
+                    {course.modules.map((module, index) => (
+                    <div key={index} id={`module-${index}`} className="moduleheading">
+                        <h2>{module.mainTitle}</h2>
 
-        {course.modules.map((module, index) => (
-          <div key={index} id={`module-${index}`} className="moduleheading">
-            <h2>{module.mainTitle}</h2>
-
-            {module.topics.map((topic, i) => (
-              <div key={i}>
-                <h3>{topic.subtitle}</h3>
-                <p>{topic.text}</p>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
+                        {module.topics.map((topic, i) => (
+                        <div key={i}>
+                            <h3>{topic.subtitle}</h3>
+                            <p>{topic.text}</p>
+                        </div>
+                        ))}
+                    </div>
+                    ))}
+                </div>
+            </div>
+            <RightSideBar/>
+        </>
   );
 }
 

@@ -1,12 +1,8 @@
-import SideBar from "./components/SideBar"
-
 export default function DashBoardPage(){
     return(
         <div>
-            <SideBar/>
-            
-             <div className="pl-8 pr-8">
-                <div className="ml-72 h-screen">
+             <div className="ml-72 px-8">
+                <div className="h-screen">
                     <Header/> 
                     
                     <div className="text-4xl pb-9">
@@ -48,8 +44,8 @@ function Header(){
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M21 21L15.8 15.8M10 18A8 8 0 1 1 10 2a8 8 0 0 1 0 16z"
                             stroke="white"
-                            stroke-width="2"
-                            stroke-linecap="round"/>
+                            strokeWidth="2"
+                            strokeLinecap="round"/>
                     </svg>
                 </div>
 
@@ -64,7 +60,7 @@ function MainSearchBox(){
     return (
         <div className="border-2 border-gray-700 rounded-xl p-3.5 pl-4 pr-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.06)] 
         focus-within:border-gray-500 h-40 flex flex-col justify-between">
-            <textarea className="outline-none h-full resize-none">input</textarea>
+            <textarea className="outline-none h-full resize-none" defaultValue="input"/>
             <div className="mt-1">buttons</div>
         </div>
     )
