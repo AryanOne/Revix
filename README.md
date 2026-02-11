@@ -9,8 +9,8 @@ This repository is for learning and practicing Git basics.
 - Track file changes
 
 ## Project Structure
-src/main/java/   -> Java files
-README.md       -> This file
+- src/main/java/   -> Java files
+- README.md       -> This file
 
 ## Getting Started
 
