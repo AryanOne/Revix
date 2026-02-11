@@ -1,6 +1,6 @@
 # Revix
 
-This repository is for learning and practicing Git and GitHub basics.
+This repository is for learning and practicing Git basics.
 
 ## Purpose
 - Learn how to use Git
